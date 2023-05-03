@@ -1,0 +1,19 @@
+{
+    "seed": 2023,
+    "save_dir": "temp/",
+    "train_data_loader": {
+        "name": "youtube-vos",
+        "data_root": "data",
+        "w": 432,
+        "h": 240,
+        "num_local_frames": 5,
+        "num_ref_frames": 3
+    },
+    "losses": {},
+    "model": {
+        "net": "lubor"
+    },
+    "trainer": {
+        "type": "Adam"
+    }
+}
