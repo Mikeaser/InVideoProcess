@@ -1,8 +1,6 @@
 import os
 import torch
 
-# https://learn.microsoft.com/zh-cn/azure/machine-learning/how-to-train-distributed-gpu?view=azureml-api-2
-
 
 def get_world_size():
     """Find OMPI world size without calling mpi functions
@@ -16,13 +14,16 @@ def get_world_size():
         return torch.cuda.device_count()
 
 
-def get_master_ip():
-    if os.environ.get("AZ_BATCH_MASTER_NODE") is not None:
-        return os.environ.get("AZ_BATCH_MASTER_NODE").split(":")[0]
-    elif os.environ.get("AZ_BATCHAI_MPI_MASTER_NODE") is not None:
-        return os.environ.get("AZ_BATCHAI_MPI_MASTER_NODE")
+def get_global_rank():
+    """Find OMPI world rank without calling mpi functions
+    :rtype: int
+    """
+    if os.environ.get("PMI_RANK") is not None:
+        return int(os.environ.get("PMI_RANK") or 0)
+    elif os.environ.get("OMPI_COMM_WORLD_RANK") is not None:
+        return int(os.environ.get("OMPI_COMM_WORLD_RANK") or 0)
     else:
-        return "127.0.0.1"
+        return 0
 
 
 def get_local_rank():
@@ -37,13 +38,10 @@ def get_local_rank():
         return 0
 
 
-def get_global_rank():
-    """Find OMPI world rank without calling mpi functions
-    :rtype: int
-    """
-    if os.environ.get("PMI_RANK") is not None:
-        return int(os.environ.get("PMI_RANK") or 0)
-    elif os.environ.get("OMPI_COMM_WORLD_RANK") is not None:
-        return int(os.environ.get("OMPI_COMM_WORLD_RANK") or 0)
+def get_master_ip():
+    if os.environ.get("AZ_BATCH_MASTER_NODE") is not None:
+        return os.environ.get("AZ_BATCH_MASTER_NODE").split(":")[0]
+    elif os.environ.get("AZ_BATCHAI_MPI_MASTER_NODE") is not None:
+        return os.environ.get("AZ_BATCHAI_MPI_MASTER_NODE")
     else:
-        return 0
+        return "127.0.0.1"

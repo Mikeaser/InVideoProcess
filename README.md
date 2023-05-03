@@ -2,6 +2,8 @@
 
 ## 环境搭建
 
+系统： ubuntu20.04LTS
+
 首先创建conda环境：(pytorch=2.0.0  cuda=11.8)
 
 ```shell
@@ -14,4 +16,11 @@ conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvi
 
 ```shell
 pip install -r requirements.txt
+```
+
+若出现mmcv库或pytorch无法安装的情况，执行如下命令安装mmcv库：
+
+```shell
+pip install -U openmim
+mim install mmcv
 ```
