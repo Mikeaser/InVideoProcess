@@ -2,23 +2,24 @@
 
 ## 环境搭建
 
-系统： ubuntu20.04LTS
+系统:  ubuntu20.04LTS
+
+显存要求:  >8G
 
 首先创建conda环境：(pytorch=2.0.0  cuda=11.8)
 
 ```shell
-conda create -n video
+conda env create -f environment.yaml -n video
 conda activate video
+```
+
+若出现pytorch无法安装的情况，执行如下命令安装pytorch框架
+
+```shell
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
 
-根据需求文件安装完整环境
-
-```shell
-pip install -r requirements.txt
-```
-
-若出现mmcv库或pytorch无法安装的情况，执行如下命令安装mmcv库：
+若出现mmcv库无法安装的情况，执行如下命令安装mmcv库：
 
 ```shell
 pip install -U openmim
