@@ -9,8 +9,11 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 from matplotlib import animation
 import torch
+import warnings
 
 from core.utils import to_tensors
+
+warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(description="E2FGVI")
 parser.add_argument("-v", "--video", type=str, required=True)

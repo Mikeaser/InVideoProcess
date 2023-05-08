@@ -64,3 +64,27 @@ release_model
   </tr>
 </tbody>
 </table>
+
+## 效果展示
+
+模型可以支持mp4与视频帧形式的流输入。
+
+#### 示例1
+
+安装完整依赖后终端运行
+
+```shell
+python test.py --model e2fgvi  --video examples/tennis --mask examples/tennis_mask  --ckpt release_model/E2FGVI-CVPR22.pth
+```
+
+该命令将示例中的tennis视频帧输入至网络中，将mask参数对应的掩码内容消除得到处理后的视频，结果保存在results文件夹中。
+
+#### 示例2
+
+终端运行
+
+```shell
+python test.py --model e2fgvi --video examples/schoolgirls.mp4 --mask examples/schoolgirls_mask  --ckpt release_model/E2FGVI-CVPR22.pth
+```
+
+该命令将mp4格式的视频schoolgirls.mp4输入，将mask参数对应的掩码内容消除得到处理后的视频，结果保存在results文件夹中。
