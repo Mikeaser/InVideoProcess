@@ -51,8 +51,10 @@ class TrainZipReader(object):
         zfile = TrainZipReader.build_file_dict(path)
         filelist = zfile.namelist()
         filelist.sort()
+        # print(path)
+        # print(filelist)
+        # print(idx)
         data = zfile.read(filelist[idx])
-        #
         im = Image.open(io.BytesIO(data))
         return im
 
