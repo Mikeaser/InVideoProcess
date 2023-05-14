@@ -4,6 +4,7 @@ import numpy as np
 import importlib
 import os
 import argparse
+import warnings
 from PIL import Image
 
 import torch
@@ -11,6 +12,8 @@ from torch.utils.data import DataLoader
 
 from core.dataset import TestDataset
 from core.metrics import calc_psnr_and_ssim, calculate_i3d_activations, calculate_vfid, init_i3d_model
+
+warnings.filterwarnings("ignore")
 
 # global variables
 w, h = 432, 240
