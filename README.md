@@ -39,8 +39,6 @@ release_model
    |- i3d_rgb_imagenet.pt
 ```
 
-
-
 ## 效果展示
 
 模型可以支持mp4与视频帧形式的流输入。
@@ -64,3 +62,13 @@ python test.py --model e2fgvi --video examples/schoolgirls.mp4 --mask examples/s
 ```
 
 该命令将mp4格式的视频schoolgirls.mp4输入，将mask参数对应的掩码内容消除得到处理后的视频，结果保存在results文件夹中。
+
+## 模型评估
+
+终端运行
+
+```shell
+python evaluate.py --model e2fgvi --dataset davis --data_root datasets/ --ckpt release_model/E2FGVI-CVPR22.pth
+```
+
+会在终端输出各个评估数据集的PSNR以及SSIM指标。
