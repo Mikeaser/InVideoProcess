@@ -71,4 +71,4 @@ python test.py --model e2fgvi --video examples/schoolgirls.mp4 --mask examples/s
 python evaluate.py --model e2fgvi --dataset davis --data_root datasets/ --ckpt release_model/E2FGVI-CVPR22.pth
 ```
 
-会在终端输出各个评估数据集的PSNR以及SSIM指标。
+会在终端输出各个评估数据集的PSNR以及SSIM指标，最终结果保存在results文件夹的metrics文件中。
