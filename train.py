@@ -1,6 +1,7 @@
 import os
 import json
 import argparse
+import warnings
 from shutil import copyfile
 
 
@@ -15,6 +16,7 @@ from core.dist import (
     get_global_rank,
 )
 
+warnings.filterwarnings('ignore')
 
 parser = argparse.ArgumentParser(description="Train the Model")
 parser.add_argument("-c", "--config", default="configs/train.json", type=str)
